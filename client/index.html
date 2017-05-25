@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <input type="button" title="test" onclick="generateReport();" value="Get PDF Report" />
+    <div id="placeholder" style="height:900px;"></div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+        crossorigin="anonymous"></script>
+    <script src="jsreport.min.js"></script>
+    <script>
+        jsreport.serverUrl = 'http://localhost:5488';
+        var json_data = {
+            "employees": [{
+                "   id": "100",
+                "name": "Prasad Kambhammettu",
+                "designation": "Developer",
+                "exp": "6"
+            },
+            {
+                "id": "101",
+                "name": "Srinivas",
+                "designation": "Architect",
+                "exp": "9"
+            },
+            {
+                "id": "102",
+                "name": "Mallikarjun",
+                "designation": "Web Developer",
+                "exp": "3"
+            },
+            {
+                "id": "103",
+                "name": "Srivalli",
+                "designation": "Test Engineer",
+                "exp": "2"
+            },
+            {
+                "id": "104",
+                "name": "Sriram",
+                "designation": "Trainee Engineer",
+                "exp": "1"
+            }
+            ]
+        }
+
+        function generateReport() {
+            var request = {
+                template: {
+                    name: 'Employee'
+                },
+                data: json_data
+            };
+            jsreport.render($("#placeholder"), request);
+            // here ”placeholder” is div tag name in html page  
+        }
+    </script>
+</body>
+
+</html>
